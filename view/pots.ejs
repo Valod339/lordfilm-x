@@ -1,0 +1,24 @@
+<%- include('head.ejs') %>
+        
+        <div class="film_content">
+
+    
+            <% for(i = 0; i < cats.length; i++){
+                 %>
+            <a href="/filmy/<%=cats[i].id %>" class="film_content_item">
+                <img src='/<%= cats[i].img %>' alt="">
+                <h2 class="film_name"><%= cats[i].name %></h2>
+                <div class="play_icon"><i class="bi bi-play-circle-fill"></i></div>
+            </a>
+            <%
+                }
+            %>
+        </div>
+        <div class="pagination">
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+        </div>
+    </main>
+
+    <%- include('footer.ejs') %>

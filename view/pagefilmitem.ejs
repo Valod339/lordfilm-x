@@ -1,0 +1,54 @@
+<%- include('head.ejs') %>
+        <div class="film_item">
+            <div class="film_descrtiption">
+                <div class="film_descrtiption_img">
+                    <img src="<%= film.img %>" alt="">
+                </div>
+                <div class="film_descrtiption_params">
+                    <h1 class="film_title"><%= film.title%></h1>
+                    <ul class="film_desc_list">
+                        <li><span class="film_desc_b">Название:</span> <%= film.name%></li>
+                        <li><span class="film_desc_b">Год выхода:</span> <%= film.date%></li>
+                        <!-- <li><span class="film_desc_b">Страна:</span> <%= film.comi%></li> -->
+                        <li><span class="film_desc_b">Категории:</span> 
+                            <ul class="film_desc_s">
+                                
+                                <% for (let i = 0; i < film.category.length; i++) {
+                                    
+                             %>
+                                <li class="film_desc_s"><%= film.category[i]%></li>
+                                <%
+                                    }
+                                %>
+                            </ul>
+                        </li>
+                        <li><span class="film_desc_b">Режиссер:</span> <%= film.producer%></li>
+                        <li><span class="film_desc_b">Актеры:</span>
+                            <ul class="film_desc_s">
+                                
+                                <% for (let i = 0; i < film.actors.length; i++) {
+                                    
+                                 %>
+                                <li><%= film.actors[i]%></li>
+                                <%
+                                    }
+                                %>
+                            </ul>
+                            </li>
+                    </ul>
+                    <p class="film_desc">
+                        <span class="film_desc_b">Описание:</span>
+                        <%= film.description%>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="film_cont">
+            <h2 class="film_cont_title"><%= film.name%></h2>
+            <iframe class="film_view" src="<%= film.film  %>" frameborder="0"></iframe>
+
+        </div>
+        <div class="comments">
+            <h4>Оставь свой отзыв <i class="bi bi-chat-fill"></i></h4>
+        </div>
+ <%- include('footer.ejs') %>
