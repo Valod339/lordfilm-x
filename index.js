@@ -7,8 +7,12 @@ const Film = require("./model/filmdb")
 const Categ = require("./model/categor")
 const che = require("cheerio")
 const requests = require("request")
+const { urlencoded } = require("express")
 
 app.use("/", express.static("public"))
+app.use(urlencoded({extended:true}))
+
+
 const db = "mongodb+srv://valod:1233110v@cluster0.lqjb8pg.mongodb.net/?retryWrites=true&w=majority"
 const createPage = (page) => path.resolve(__dirname, "view", `${page}.ejs`)
 
@@ -141,11 +145,25 @@ app.get("/search/:id", (req, res)=>{
     console.log(req.params.id);
     console.log('====================================');
 }) 
+
+app.get("/search", (req, res) =>{
+    Film.find({
+        filmsas: {
+            title: req.query.q
+        }
+    })
+    .then(search => {
+        console.log(search);
+
+        return res.render(createPage("search"), {search})
+    })
+
+})
 app.use((req, res) =>{
     res.send("404")
 }) 
 app.listen(PORT, () =>{
-    console.log("server connexxxt....");
+    console.log("server connexxxt...." + PORT);
 })
 
 

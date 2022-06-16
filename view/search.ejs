@@ -1,0 +1,14 @@
+<%- include('head.ejs') %>
+<div class="film_content">
+    <% for(i = 0; i < search.length; i++){
+         %>
+    <a href="/filmy/<%=search[i].id %>" class="film_content_item">
+        <img src='<%= search[i].img %>' alt="">
+        <h2 class="film_name"><%= search[i].name %></h2>
+        <div class="play_icon"><i class="bi bi-play-circle-fill"></i></div>
+    </a>
+    <%
+        }
+    %>
+</div>
+<%- include('footer.ejs') %>
